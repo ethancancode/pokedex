@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+Old+Italic&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Saira:ital,wght@0,100..900;1,100..900&family=Share+Tech+Mono&family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/de2be28836.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="content_container">
+
+    <div id="git-hub">
+      <a href="https://github.com/ethancancode" target="_main">
+        <i class="fa-brands fa-github"></i>
+        <div id="git-id">ethancancode</div>
+      </a>
+    </div>
+
+    <h1>Pokédex</h1>
+
+    <div id="desc_container">
+      <p id="welcome_para">Welcome to the Pokédex!</p>
+      <p id="desc_para">
+        This website is a simple and interactive Pokédex built using PokéAPI.
+        You can search for any Pokémon by name or ID to see detailed information like its type,
+        abilities, height, weight, base stats, and more!
+      </p>
+    </div>
+
+    <div id="fetch_container">
+      <input type="text" id="pokemon_name" placeholder="Enter a Pokémon's name or ID..." autocomplete="off">
+
+      <div id="button_container" class="clickable_div">
+        <button id="search_button" onclick="fetchData()" class="div_button">Search</button>
+        <div class="pokeball_container">
+          <div class="red_background"></div>
+          <div class="mid_line"></div>
+          <div class="white_circle"></div>
+        </div>
+      </div>
+
+      <div id="random_button_container" class="clickable_div">
+        <button id="random_pokemon" class="div_button">Pick a Random Pokémon!</button>
+        <div class="pokeball_container">
+          <div class="red_background"></div>
+          <div class="mid_line"></div>
+          <div class="white_circle"></div>
+        </div>
+      </div>
+
+      <div id="card_container">
+        <div id="grey_container">
+          <div id="details_container">
+
+            <div id="av_container">
+              <span id="pokemon_details"></span>
+              <div id="image_container">
+                <button class="switch_img" onclick="showPrev()"> < </button>
+                <img src="" id="pokemon_sprite" onclick="shinyClick()">
+                <button class="switch_img" onclick="showNext()">></button>
+              </div>
+
+              <div id="cry_container" class="clickable_div">
+                <button id="cry_button" class="div_button" onclick="playCry()">Play Cry</button>
+              </div>
+
+              <div id="gender_container">
+                <button id="male_button" class="gender_button" onclick="displayMaleSprite()">♂️</button>
+                <button id="female_button" class="gender_button" onclick="displayFemaleSprite()">♀️</button>
+              </div>
+            </div>
+
+            <div id="info_container">
+              <div id="type_container" class="info_wrapper">
+                <span class="info_label">Type </span> <span id="type_text" class="info_value"></span>
+              </div>
+
+              <div id="height_container" class="info_wrapper">
+                <span class="info_label">Height</span> <span id="height_text" class="info_value"></span>
+              </div>
+
+              <div id="weight_container" class="info_wrapper">
+                <span class="info_label">Weight</span> <span id="weight_text" class="info_value"></span>
+              </div>
+
+              <div id="ability_container" class="info_wrapper">
+                <span class="info_label">Ability</span> <span id="ability_text" class="info_value"></span>
+              </div>
+
+              <div id="hidden_ability_container" class="info_wrapper">
+                <span id="hidden_label" class="info_label">Hidden Ability</span> <span id="hidden_ability_text" class="info_value"></span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="alert_container"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

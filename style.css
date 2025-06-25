@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    color: #000000bc;
+    background-image: url("media/background\ image.png");
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Josefin Sans';
+    overflow-y  : scroll;
+}
+
+a {
+    text-decoration: none;
+    color: #000000bc;
+}
+
+#git-hub {
+    padding: 4px;
+    position:  absolute;
+    right: 0px;
+    top: 0px;
+}
+
+#git-id {
+    display: inline-flex;
+    font-size: 17px;
+    position: relative;
+    bottom: 1px;  
+    z-index: 1;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 10px 0 30px 0;
+    font-family: 'Pokemon Solid';
+    transform: rotate(-5deg);
+    color: yellow;
+    text-align: center;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: blue;
+    letter-spacing: 3px;
+}
+
+#content_container {    
+    width: 100%;
+    padding-bottom: 80px;
+    position: absolute;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#desc_container {
+    font-size: 25px;
+    color: yellow;  
+    text-align: center;
+    padding: 20px 0px;
+}
+
+#welcome_para {
+    font-size: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+#desc_para {
+    padding: 0px 75px 0 75px;
+}
+
+#fetch_container {
+    margin: 100px 0 30px 0;
+}
+
+input {
+    width: 30%;
+    font-family: 'Josefin Sans';
+    padding: 5px;
+    border: 2px solid black;
+    background-color: whitesmoke;
+}
+
+#button_container {
+    display: inline-flex;
+    margin-left: -6px;
+    border: 2px solid black;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+#random_button_container {
+    display: flex;
+    border: 2px solid black;
+    align-items: center;
+    background-color: whitesmoke;
+    justify-content: center;
+    margin-top: 30px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clickable_div {
+    cursor: pointer;
+}
+
+.pokeball_container {
+    height: 20px;
+    width: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+}
+
+.red_background {
+    height: 50%;
+    width: 100%;
+    background-color: red;
+}
+
+.mid_line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 105%;
+    height: 1px;
+    background-color: black;
+}
+
+.white_circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 6px;
+    height: 6px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+button {
+    font-family: 'Josefin Sans';
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#card_container {
+    display: none;
+    justify-content: center;
+    margin: 100px 0 50px 0;
+}
+
+#grey_container {
+    height: 500px;
+    width: 65%;
+    background-color: #3e5563;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#details_container {
+    display: flex;
+    height: 95%;
+    width: 98%;
+    background-color : #2d2d2d;
+}
+
+#av_container {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    left: 30px;
+}
+
+#pokemon_details {
+    margin-top: 100px;
+    position: relative;
+    display: block;
+    font-size: 20px;
+}
+
+#image_container {
+    display: flex;
+    cursor: pointer;
+}
+
+#pokemon_sprite {
+    width: 150px;
+    height: 150px;
+}
+
+.switch_img {
+    background-color: grey;
+    height: 20px;
+    position: relative;
+    top: 50%;
+}
+
+#cry_container {
+    background-color: grey;
+    width: 150px;
+    padding: 5px 10px;
+}
+
+#cry_button {
+    font-size: 15px;
+}
+
+#gender_container {
+    margin-top: 20px;
+}
+
+#male_button {
+    background-color: blue;
+}
+
+#female_button {
+    background-color: pink;
+}
+
+.gender_button {
+    font-size: 20px;
+}
+
+#info_container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.info_wrapper {
+    display: flex;
+    width: 450px;
+    justify-content: space-between;
+}
+
+.info_label {
+    background-color: #425A69;
+    width: 100px;
+    padding: 5px;
+    border: 2px solid black;
+    box-shadow: 1px 1px 1px black;
+}
+
+.info_value {
+    background-color: #3C4044;
+    padding: 5px;
+    border: 2px solid black;
+    width: 300px;
+    text-align: left;
+    color: white;
+}
+
+#hidden_label {
+    width: 125px;
+}
+
+#alert_container {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 30px;
+    font-size: 50px;
+    color: rgb(210, 210, 0);
+    display: none;
+    animation: slideUp 2s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+    0% {
+      bottom: -10%;
+    }
+    50% {
+        bottom: 50%;
+    }
+    100% {
+        bottom: 110%;
+    }
+}
+
+
+
