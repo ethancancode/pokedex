@@ -46,13 +46,20 @@
       </div>
 
       <div id="random_button_container" class="clickable_div">
-        <button id="random_pokemon" class="div_button">Pick a Random Pokémon!</button>
+        <button id="random_pokemon" class="div_button" onclick="fetchRandomPokemon()">Pick a Random Pokémon!</button>
         <div class="pokeball_container">
           <div class="red_background"></div>
           <div class="mid_line"></div>
           <div class="white_circle"></div>
         </div>
       </div>
+
+      <div id="loader_div">
+        <div id="loading_text">Fetching Data!</div>
+        <img id ="loader" src="media/pikachu_loader.gif">
+      </div>
+      
+      <div id="error_div"></div>
 
       <div id="card_container">
         <div id="grey_container">
@@ -102,7 +109,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div id="alert_container"></div>

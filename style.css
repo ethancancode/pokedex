@@ -13,7 +13,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     font-family: 'Josefin Sans';
-    overflow-y  : scroll;
+    overflow-y: hidden;
 }
 
 a {
@@ -50,9 +50,10 @@ h1 {
 
 #content_container {    
     width: 100%;
-    padding-bottom: 80px;
+    height: 100%;
     position: absolute;
     text-align: center;
+    padding-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -71,6 +72,14 @@ h1 {
 
 #desc_para {
     padding: 0px 75px 0 75px;
+}
+
+#error_div {
+    margin-top: 100px;
+    color:rgb(210, 210, 0);
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
 }
 
 #fetch_container {
@@ -242,7 +251,6 @@ button {
     display: flex;
     flex-direction: column;
     margin-left: 200px;
-    flex: 1;
     justify-content: space-around;
 }
 
@@ -284,6 +292,22 @@ button {
     animation: slideUp 2s ease-in-out forwards;
 }
 
+#loader_div {
+    display: none;
+    margin-top: 100px;
+}
+
+#loader {
+    width: 150px;
+    height: 150px;
+}
+
+#loading_text {
+    color:rgb(210, 210, 0);
+    font-size: 50px;
+}
+
+
 @keyframes slideUp {
     0% {
       bottom: -10%;
@@ -294,6 +318,53 @@ button {
     100% {
         bottom: 110%;
     }
+}
+
+@media (max-width: 1300px) {
+  #grey_container {
+    transform: scale(0.75);
+    transform-origin: top center;
+  }
+
+  #pokemon_details {
+    margin-top: 50px;
+   }  
+
+  #details_container {
+    flex-direction: column;
+    align-items: center;    
+    justify-content: space-between;
+   }
+
+  .info_wrapper{
+    width: 100%;
+   }
+
+  .info_label {
+    width: 70px;
+  }
+
+  .info_value {
+    width: 100px;
+    font-size: 12px;
+  }
+
+   #info_container {
+    width: 80%;
+    height: 100%;
+    margin-left: 0;
+   }
+
+  #av_container {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-left: 0;
+    left: 0;
+  }
+
+  #ability_text {
+    width: 200px ;
+  }
 }
 
 

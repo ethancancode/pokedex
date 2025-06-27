@@ -7,6 +7,8 @@ const height = document.getElementById("height_text");
 const weight = document.getElementById("weight_text");
 const ability = document.getElementById("ability_text");
 const hiddenability = document.getElementById("hidden_ability_text");
+const pokemondetails = document.getElementById("pokemon_details");
+const error_message = document.getElementById("error_div");
 
 let fetchedData = null;
 let audio = null;
@@ -15,16 +17,28 @@ let imageClickCount = 0;
 let showingFront = true;
 let displayFemale = false;
 
-async function fetchData() {
-    try {
-        const pokemonNameInput = document.getElementById("pokemon_name").value;
-        const response = await fetch (`https://pokeapi.co/api/v2/pokemon/${pokemonNameInput}`);
-        const pokemondetails = document.getElementById("pokemon_details");
+async function displayPokemonDetails (pokemonattribute) {  
+    document.getElementById("loader_div").style.display = "block";
+    document.getElementById("content_container").style.height = "auto";
+    document.body.style.overflowY = "scroll";   
+    card.style.display = "none";
+    error_message.style.display = "none";
 
-        if(!response.ok) {
-            throw new Error("Couldn't find this Pokémon! :(");
-        }
+    if(pokemonattribute == "") {
+        error_message.style.display = "block";        
+        error_message.innerText = "Enter a Pokémon name or ID!";
+        document.body.style.overflowY = "scroll";   
+        card.style.display = "none";
+        document.getElementById("loader_div").style.display = "none";
+        return;
+    }
 
+     try {
+        const response = await fetch (`https://pokeapi.co/api/v2/pokemon/${pokemonattribute}`);
+        if(!response.ok ) {
+            throw new Error("Couldn't find a Pokémon with this name! :(");
+            
+        } 
         const data = await response.json();
         fetchedData = data;
         card.style.display = "flex";
@@ -32,6 +46,7 @@ async function fetchData() {
         const pokemonSprite = data.sprites.front_default;
         image.src = pokemonSprite;
         image.style.display = "block";
+
         pokemonNameraw = data.forms[0].name;
         pokemonName = pokemonNameraw.charAt(0).toUpperCase() + pokemonNameraw.slice(1);
         pokemondetails.innerText = `No. ${data.id} ${pokemonName}`;
@@ -56,19 +71,20 @@ async function fetchData() {
         let weightlbs = weightlbsraw.toFixed(1);
         weight.innerText = `${weightlbs} lbs (${weightkg} kg)`;
 
-        let hiddenabilityraw = null;
-        let abilityraw = null;
+        let hiddenabilityraw = "None";
+        let abilityarray = [];
         data.abilities.forEach (t => {
             if (t.is_hidden) {
                 hiddenabilityraw = t.ability.name;
             }
             else {
-                abilityraw = t.ability.name;
+                let abilityraw = t.ability.name;
+                let abilityval = abilityraw.charAt(0).toUpperCase() + abilityraw.slice(1);
+                abilityarray.push(abilityval);
             }     
-        })
+        });
         let hiddenabilityval = hiddenabilityraw.charAt(0).toUpperCase() + hiddenabilityraw.slice(1);
-        let abilityval = abilityraw.charAt(0).toUpperCase() + abilityraw.slice(1);
-        ability.innerText = abilityval;
+        ability.innerText = abilityarray.join(", ");
         hiddenability.innerText = hiddenabilityval;
 
         if(data.sprites.front_female == null) {
@@ -76,14 +92,29 @@ async function fetchData() {
         }
         else {
             gender.style.display = "block";
-        }
-
-
+        }       
     }
-    catch {
-        console.error(Error);
+    catch(error) {
+        error_message.style.display = "block";
+        error_message.innerText = error.message;
+        card.style.display = "none";
     }
+    finally {
+        document.getElementById("loader_div").style.display = "none";
+    }
+        
 }
+
+function fetchRandomPokemon() {
+    let randomId = Math.floor(Math.random() * 1025);
+    displayPokemonDetails(randomId);
+}
+
+function fetchData() {
+    const pokemonNameInput = document.getElementById("pokemon_name").value;
+    displayPokemonDetails(pokemonNameInput);
+}
+
 
 function playCry() {
 
@@ -182,4 +213,17 @@ document.querySelectorAll('.clickable_div').forEach (div => {
         button.click();
     }
 } )
-})
+});
+
+document.getElementById("pokemon_name").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                fetchData();
+            }
+});
+
+window.addEventListener("load", () => {
+    setTimeout( () => {
+        window.scrollTo(0,0);
+    }, 10)     
+});
+
