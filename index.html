@@ -12,109 +12,144 @@
   <script src="https://kit.fontawesome.com/de2be28836.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+  
   <div id="content_container">
-
-    <div id="git-hub">
+    
+    <div id="git-hub"> <!--github logo-->
       <a href="https://github.com/ethancancode" target="_main">
         <i class="fa-brands fa-github"></i>
         <div id="git-id">ethancancode</div>
       </a>
     </div>
-
+    
     <h1>Pokédex</h1>
-
+    
     <div id="desc_container">
-      <p id="welcome_para">Welcome to the Pokédex!</p>
+      <p id="welcome_para">Welcome to the Pokédex!</p> <!-- intro para-->
       <p id="desc_para">
         This website is a simple and interactive Pokédex built using PokéAPI.
         You can search for any Pokémon by name or ID to see detailed information like its type,
         abilities, height, weight, base stats, and more!
       </p>
     </div>
-
-    <div id="fetch_container">
+    
+    <div id="fetch_container"> <!--buttons and input container-->
       <input type="text" id="pokemon_name" placeholder="Enter a Pokémon's name or ID..." autocomplete="off">
-
-      <div id="button_container" class="clickable_div">
-        <button id="search_button" onclick="fetchData()" class="div_button">Search</button>
+      
+      <div id="button_container" onclick="fetchData()" class="clickable_div">
+        <button>Search</button>
         <div class="pokeball_container">
           <div class="red_background"></div>
           <div class="mid_line"></div>
           <div class="white_circle"></div>
         </div>
-      </div>
-
-      <div id="random_button_container" class="clickable_div">
-        <button id="random_pokemon" class="div_button" onclick="fetchRandomPokemon()">Pick a Random Pokémon!</button>
-        <div class="pokeball_container">
-          <div class="red_background"></div>
-          <div class="mid_line"></div>
-          <div class="white_circle"></div>
-        </div>
-      </div>
-
-      <div id="loader_div">
-        <div id="loading_text">Fetching Data!</div>
-        <img id ="loader" src="media/pikachu_loader.gif">
       </div>
       
-      <div id="error_div"></div>
-
-      <div id="card_container">
-        <div id="grey_container">
-          <div id="details_container">
-
-            <div id="av_container">
-              <span id="pokemon_details"></span>
-              <div id="image_container">
-                <button class="switch_img" onclick="showPrev()"> < </button>
-                <img src="" id="pokemon_sprite" onclick="shinyClick()">
-                <button class="switch_img" onclick="showNext()">></button>
-              </div>
-
-              <div id="cry_container" class="clickable_div">
-                <button id="cry_button" class="div_button" onclick="playCry()">Play Cry</button>
-              </div>
-
-              <div id="gender_container">
-                <button id="male_button" class="gender_button" onclick="displayMaleSprite()">♂️</button>
-                <button id="female_button" class="gender_button" onclick="displayFemaleSprite()">♀️</button>
-              </div>
-            </div>
-
-            <div id="info_container">
-              <div id="type_container" class="info_wrapper">
-                <span class="info_label">Type </span> <span id="type_text" class="info_value"></span>
-              </div>
-
-              <div id="height_container" class="info_wrapper">
-                <span class="info_label">Height</span> <span id="height_text" class="info_value"></span>
-              </div>
-
-              <div id="weight_container" class="info_wrapper">
-                <span class="info_label">Weight</span> <span id="weight_text" class="info_value"></span>
-              </div>
-
-              <div id="ability_container" class="info_wrapper">
-                <span class="info_label">Ability</span> <span id="ability_text" class="info_value"></span>
-              </div>
-
-              <div id="hidden_ability_container" class="info_wrapper">
-                <span id="hidden_label" class="info_label">Hidden Ability</span> <span id="hidden_ability_text" class="info_value"></span>
-              </div>
-
-            </div>
-
-          </div>
+      <div id="random_button_container" class="clickable_div" onclick="fetchRandomPokemon()">
+        <button>Pick a Random Pokémon!</button>
+        <div class="pokeball_container">
+          <div class="red_background"></div>
+          <div class="mid_line"></div>
+          <div class="white_circle"></div>
         </div>
       </div>
+      
     </div>
 
-    <div id="alert_container"></div>
+    <div id="loader_div"> <!--loading div-->
+      <div id="loading_text">Fetching Data!</div>
+      <img id ="loader" src="media/pikachu_loader.gif">
+    </div>
+    
+    <div id="error_div"></div><!--error container-->
+    
+    <div id="card_container"> <!--card container-->
+      <div id="grey_container">
+        <div id="page_container"> <!--page switcher-->
+          <div id="overall_container" class="page_switcher" onclick="switchPages(true)">Overall</div>
+          <div id="stat_container" class="page_switcher" onclick="switchPages(false)">Stats</div>
+        </div>
 
+        <div id="details_container">
+          <div id="av_container"> <!--sprite,cry and gender container -->
+            <span id="pokemon_details"></span>
+            <div id="image_container">
+              <button class="switch_img" id="prev_img" onclick="showPrev()"> < </button>
+              <img src="" id="pokemon_sprite" onclick="shinyClick()">
+              <button class="switch_img" id="next_img" onclick="showNext()">></button>
+            </div>
+            
+            <div id="cry_container" class="clickable_div">
+              <button id="cry_button" onclick="playCry()">Play Cry</button>
+            </div>
+            
+            <div id="gender_container">
+              <button id="male_button" class="gender_button" onclick="displayMaleSprite()">♂️</button>
+              <button id="female_button" class="gender_button" onclick="displayFemaleSprite()">♀️</button>
+            </div>
+          </div>
+          
+          <div id="info_container"> <!--information-->
+            <div id="type_container" class="info_wrapper">
+              <span class="info_label">Type </span> <span id="type_text" class="info_value"></span>
+            </div>
+            
+            <div id="height_container" class="info_wrapper">
+              <span class="info_label">Height</span> <span id="height_text" class="info_value"></span>
+            </div>
+            
+            <div id="weight_container" class="info_wrapper">
+              <span class="info_label">Weight</span> <span id="weight_text" class="info_value"></span>
+            </div>
+            
+            <div id="ability_container" class="info_wrapper">
+              <span class="info_label">Ability</span> <span id="ability_text" class="info_value"></span>
+            </div>
+            
+            <div id="hidden_ability_container" class="info_wrapper">
+              <span id="hidden_label" class="info_label">Hidden Ability</span> <span id="hidden_ability_text" class="info_value"></span>
+            </div>
+            
+          </div>
+          
+          <div id="stats_div"> <!--statistics-->
+            <div id ="hp_container" class="stats_wrapper">
+              <span class="info_label stat_label">HP</span>  <span id="hp_value" class="info_label stat_label"></span> <span class="info_label stat_bar"> <span class="inner_bar" id="hp_bar"> </span></span>
+            </div>
+            
+            <div id="attack_container" class="stats_wrapper">
+              <span class="info_label stat_label">Attack</span>  <span id="attack_value" class="info_label stat_label"></span> <span class="info_label stat_bar"> <span class="inner_bar" id="attack_bar"> </span></span>
+            </div>
+            
+            <div id="defense_container" class="stats_wrapper">
+              <span class="info_label stat_label">Defense</span>  <span id="defense_value" class="info_label stat_label"></span> <span class="info_label stat_bar"> <span class="inner_bar" id="defense_bar"> </span></span>
+            </div>
+            
+            <div id ="sp_attack_container" class="stats_wrapper">
+              <span class="info_label stat_label">Sp. Attack</span>  <span id="sp_attack_value" class="info_label stat_label"></span> <span class="info_label stat_bar"> <span class="inner_bar" id="sp_attack_bar"> </span></span>
+            </div>
+            
+            <div id ="sp_defense_container" class="stats_wrapper">
+              <span class="info_label stat_label">Sp. Defense</span>  <span id="sp_defense_value" class="info_label stat_label"></span> <span class="info_label stat_bar"> <span class="inner_bar" id="sp_defense_bar"> </span></span>
+            </div>
+            
+            <div id ="speed_container" class="stats_wrapper">
+              <span class="info_label stat_label">Speed</span>  <span id="speed_value" class="info_label stat_label"></span> <span class="info_label stat_bar"> <span class="inner_bar" id="speed_bar"> </span></span>
+            </div>              
+            
+            <div id="total_container" class="stats_wrapper">
+              <span class="info_label stat_label">Total</span>  <span id="total_value" class="info_label stat_label"></span> <span class="info_label stat_bar"> <span class="inner_bar" id="total_bar"> </span></span>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-
-  <script src="script.js"></script>
+  
+  <div id="alert_container"></div> <!--easter egg :p-->
+  
+<script src="script.js"></script>
 </body>
 </html>

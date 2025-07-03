@@ -11,14 +11,17 @@ body {
     background-attachment: fixed;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
     font-family: 'Josefin Sans';
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: #000000bc;
+#content_container {    
+    width: 100%;
+    height: auto;
+    padding-bottom: 100px;
+    position: absolute;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 #git-hub {
@@ -26,6 +29,11 @@ a {
     position:  absolute;
     right: 0px;
     top: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000bc;
 }
 
 #git-id {
@@ -48,15 +56,6 @@ h1 {
     letter-spacing: 3px;
 }
 
-#content_container {    
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    text-align: center;
-    padding-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
 #desc_container {
     font-size: 25px;
     color: yellow;  
@@ -72,14 +71,6 @@ h1 {
 
 #desc_para {
     padding: 0px 75px 0 75px;
-}
-
-#error_div {
-    margin-top: 100px;
-    color:rgb(210, 210, 0);
-    font-size: 50px;
-    width: 100%;
-    text-align: center;
 }
 
 #fetch_container {
@@ -102,20 +93,17 @@ input {
     background-color: whitesmoke;
 }
 
-#random_button_container {
-    display: flex;
-    border: 2px solid black;
-    align-items: center;
-    background-color: whitesmoke;
-    justify-content: center;
-    margin-top: 30px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+button {
+    font-family: 'Josefin Sans';
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .clickable_div {
     cursor: pointer;
+    padding: 0 2px;
 }
 
 .pokeball_container {
@@ -141,7 +129,7 @@ input {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 105%;
-    height: 1px;
+    height: 2px;
     background-color: black;
 }
 
@@ -152,17 +140,44 @@ input {
     transform: translate(-50%, -50%);
     background-color: white;
     width: 6px;
-    height: 6px;
+    height: 6.5px;
     border: 2px solid black;
     border-radius: 50%;
 }
 
-button {
-    font-family: 'Josefin Sans';
-    padding: 5px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+#random_button_container {
+    display: flex;
+    border: 2px solid black;
+    align-items: center;
+    background-color: whitesmoke;
+    justify-content: center;
+    margin-top: 30px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#loader_div {
+    display: none;
+    margin-top: 100px;
+}
+
+#loader {
+    width: 150px;
+    height: 150px;
+}
+
+#loading_text {
+    color:rgb(210, 210, 0);
+    font-size: 50px;
+}
+
+#error_div {
+    margin-top: 100px;
+    color:rgb(210, 210, 0);
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
 }
 
 #card_container {
@@ -176,8 +191,34 @@ button {
     width: 65%;
     background-color: #3e5563;
     display: flex;
+    border-radius: 15px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+#page_container {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    left: 0;
+    width: 100%;
+}
+
+.page_switcher {
+    padding: 15px 20px;
+    position: absolute;
+    top: -47px;
+    left: 5px;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    color: white;
+    cursor: pointer;
+    background-color: #3e5563;
+}
+
+#stat_container {
+    left: 120px;
+    padding: 15px 25px;
 }
 
 #details_container {
@@ -209,16 +250,16 @@ button {
     cursor: pointer;
 }
 
-#pokemon_sprite {
-    width: 150px;
-    height: 150px;
-}
-
 .switch_img {
     background-color: grey;
     height: 20px;
     position: relative;
     top: 50%;
+}
+
+#pokemon_sprite {
+    width: 150px;
+    height: 150px;
 }
 
 #cry_container {
@@ -275,10 +316,71 @@ button {
     width: 300px;
     text-align: left;
     color: white;
+    box-shadow: 1px 1px 1px black;
 }
 
 #hidden_label {
     width: 125px;
+}
+
+#stats_div {
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: space-around;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.stats_wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.stat_label {
+    width: 200px;
+}
+
+.stat_bar { 
+    width: 370px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.inner_bar {
+    height: 12px;
+    display: inline-block;
+    border: 2px solid black;
+}
+
+#hp_bar {
+    background-color: #8cc454;
+}
+
+#attack_bar {
+    background-color: #c45454;
+}
+
+#defense_bar {
+    background-color: #c18752;
+}
+
+#sp_attack_bar {
+    background-color: #a631cb;
+}
+
+#sp_defense_bar {
+    background-color: #c6b02f;
+}
+
+#speed_bar {
+    background-color: #3181cb;
+}
+
+#total_bar {
+    background-color: #fbfbfb;
 }
 
 #alert_container {
@@ -292,25 +394,9 @@ button {
     animation: slideUp 2s ease-in-out forwards;
 }
 
-#loader_div {
-    display: none;
-    margin-top: 100px;
-}
-
-#loader {
-    width: 150px;
-    height: 150px;
-}
-
-#loading_text {
-    color:rgb(210, 210, 0);
-    font-size: 50px;
-}
-
-
 @keyframes slideUp {
     0% {
-      bottom: -10%;
+        bottom: -10%;
     }
     50% {
         bottom: 50%;
@@ -321,51 +407,131 @@ button {
 }
 
 @media (max-width: 1300px) {
-  #grey_container {
-    transform: scale(0.75);
-    transform-origin: top center;
-  }
-
-  #pokemon_details {
-    margin-top: 50px;
-   }  
-
-  #details_container {
-    flex-direction: column;
-    align-items: center;    
-    justify-content: space-between;
-   }
-
-  .info_wrapper{
-    width: 100%;
-   }
-
-  .info_label {
-    width: 70px;
-  }
-
-  .info_value {
-    width: 100px;
-    font-size: 12px;
-  }
-
-   #info_container {
-    width: 80%;
-    height: 100%;
-    margin-left: 0;
-   }
-
-  #av_container {
-    width: 100%;
-    margin-bottom: 10px;
-    margin-left: 0;
-    left: 0;
-  }
-
-  #ability_text {
-    width: 200px ;
-  }
+    
+    h1 {
+        font-size: 50px;
+    }  
+    
+    #desc_container {
+        font-size: 30px;
+    }
+    
+    #desc_para {
+        font-size: 20px;
+    }
+    
+    #pokemon_name {
+        width: 200px;
+    }
+    
+    #fetch_container {
+        margin-top: 30px;
+    }
+    
+    #grey_container {
+        transform: scale(0.95);
+        transform-origin: top center;
+        max-width: 50%;
+    }
+    
+    #pokemon_details {
+        margin-top: 50px;
+    }  
+    
+    #av_container {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0;
+        left: 0;
+    }
+    
+    #details_container {
+        flex-direction: column;
+        align-items: center;    
+        justify-content: space-between;
+        padding-bottom: 5px;
+    }
+    
+    #info_container {
+        width: 80%;
+        height: 100%;
+        margin-left: 0;
+    }
+    
+    .info_wrapper{
+        width: 100%;
+    }
+    
+    .info_label {
+        width: 70px;
+    }
+    
+    .info_value {
+        width: 200px;
+        font-size: 12px;
+    }
+    
+    .stat_bar {
+        width: 100%;
+    }
+    
+    .stat_label {
+        width: 100px;
+        font-size: 10px;
+    }
+    
+    .stats_wrapper {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
 }
 
+
+@media (max-width: 860px) {
+    body {
+        overflow-y: scroll;
+    }  
+    
+    .page_switcher {
+        font-size: 10px;
+    }
+    
+    #prev_img {
+        left: 15px;
+    }
+    
+    #next_img {
+        left: -15px;
+    }
+    
+    #cry_container {
+        padding: 2px 2px;
+    }
+    
+    #cry_button {
+        font-size: 10px;
+    }
+    
+    .info_label {
+        font-size: 10px;
+    }
+    
+    .info_value {
+        font-size: 10px;
+    }
+    
+    #stat_container {
+        left: 82px;
+    }
+    
+    .stat_label {
+        width: 50px;
+    }
+    
+    #alert_container {
+        font-size: 15px;
+    }
+}
 
 
