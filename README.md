@@ -9,7 +9,7 @@ Welcome to the **Pokédex**, a sleek and interactive web application built using
 - 🎨 Toggle between male, female, and shiny sprites (if available)
 - 🔈 Play Pokémon cries
 - 🎲 Fetch a random Pokémon
-- 💡 Responsive UI for all screen sizes
+- 💡 Responsive UI for most screen sizes
 
 ## ⚙️ Tech Stack
 
@@ -26,5 +26,6 @@ Welcome to the **Pokédex**, a sleek and interactive web application built using
 This project is licensed under the MIT License. Feel free to use, modify, or share it with attribution.
 
 ## 🙌 Author
-Made with ❤️ by ethancancode
+Made with ❤️ by [Ethan Rodrigues](https://github.com/ethancancode)
+
 Feel free to connect or fork the project!   
