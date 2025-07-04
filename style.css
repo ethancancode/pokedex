@@ -5,8 +5,8 @@
 
 body { 
     color: #000000bc;
-    background-image: url("media/background\ image.png");
-    background-repeat: repeat-y;
+    background-image: url("media/background_image.png");
+    background-repeat: repeat;
     background-size: cover;
     background-attachment: fixed;
     height: 100%;
@@ -407,7 +407,6 @@ button {
 }
 
 @media (max-width: 1300px) {
-    
     h1 {
         font-size: 50px;
     }  
@@ -490,6 +489,7 @@ button {
 
 @media (max-width: 860px) {
     body {
+        background-size: 800px;
         overflow-y: scroll;
     }  
     
@@ -532,6 +532,7 @@ button {
     #alert_container {
         font-size: 15px;
     }
+
 }
 
 
